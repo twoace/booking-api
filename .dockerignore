@@ -8,6 +8,7 @@ instance/*
 !instance/.gitignore
 .webassets-cache
 .env
+migrations
 
 ### Python template
 # Byte-compiled / optimized / DLL files

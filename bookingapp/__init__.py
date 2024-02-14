@@ -14,10 +14,12 @@ def create_app(test_config=None):
         app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
     )
 
-    with open(os.getenv('DB_PASSWORD_FILE'), 'r') as password_file:
-        DB_PASSWORD = password_file.read().strip()
+    db_uri = 'sqlite:///' + os.path.join(app.instance_path, 'bookingapp.sqlite')
+    if os.getenv('DOCKER_ENV'):
+        with open(os.getenv('DB_PASSWORD_FILE'), 'r') as password_file:
+            DB_PASSWORD = password_file.read().strip()
 
-    db_uri = f"mysql+pymysql://{os.getenv('DB_USER')}:{DB_PASSWORD}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
+        db_uri = f"mysql+pymysql://{os.getenv('DB_USER')}:{DB_PASSWORD}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
 
     app.config.from_mapping(
         API_TITLE="Booking REST API",
