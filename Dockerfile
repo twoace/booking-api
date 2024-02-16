@@ -4,8 +4,6 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 COPY .. .
-ENV GUNICORN_CMD_ARGS="-w 4 --bind 0.0.0.0:8000"
-RUN flask db init
-RUN flask db migrate
-RUN flask db upgrade
-CMD ["gunicorn", "bookingapp:create_app()"]
+RUN chmod u+x ./entrypoint.sh
+RUN chmod u+x ./wait-for-it.sh
+ENTRYPOINT ["./entrypoint.sh"]

@@ -2,13 +2,14 @@
 bookingapp/instance
 sqlconfig.txt
 database.env
+compose
 
 ### Flask template
 instance/*
 !instance/.gitignore
 .webassets-cache
 .env
-migrations
+migrations/versions/*
 
 ### Python template
 # Byte-compiled / optimized / DLL files

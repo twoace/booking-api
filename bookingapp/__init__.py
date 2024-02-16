@@ -4,8 +4,6 @@ from flask_migrate import Migrate
 from werkzeug.middleware.proxy_fix import ProxyFix
 from flask_smorest import Api
 from bookingapp.resources import UserBlueprint, BookingBlueprint, ItemBlueprint
-import pymysql
-pymysql.install_as_MySQLdb()
 
 
 def create_app(test_config=None):
@@ -19,7 +17,7 @@ def create_app(test_config=None):
         with open(os.getenv('DB_PASSWORD_FILE'), 'r') as password_file:
             DB_PASSWORD = password_file.read().strip()
 
-        db_uri = f"mysql+pymysql://{os.getenv('DB_USER')}:{DB_PASSWORD}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
+        db_uri = f"postgresql://{os.getenv('DB_USER')}:{DB_PASSWORD}@{os.getenv('DB_HOST')}/{os.getenv('DB_NAME')}"
 
     app.config.from_mapping(
         API_TITLE="Booking REST API",

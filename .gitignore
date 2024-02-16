@@ -8,7 +8,8 @@ bookingapp/instance
 sqlconfig.txt
 database.env
 .idea
-migrations
+migrations/versions/*
+compose
 
 ### Python template
 # Byte-compiled / optimized / DLL files

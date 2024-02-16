@@ -9,7 +9,7 @@ dependencies = [
     "marshmallow",
     "sqlalchemy",
     "flask-sqlalchemy",
-    "pymysql",
+    "psycopg2-binary",
     "gunicorn",
     "werkzeug",
     "Flask-Migrate"
